@@ -1,0 +1,1923 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> program
+Rule 1     program -> sent
+Rule 2     sent -> if_instr
+Rule 3     sent -> for_instr
+Rule 4     sent -> while_instr
+Rule 5     sent -> print
+Rule 6     sent -> dec_val
+Rule 7     sent -> sing_val
+Rule 8     sent -> dec_array
+Rule 9     sent -> empty
+Rule 10    if_instr -> IF IPAREN exp_logic RPAREN ILLAVE sent RLLAVE
+Rule 11    if_instr -> IF IPAREN exp_logic RPAREN ILLAVE sent RLLAVE ELSE ILLAVE sent RLLAVE
+Rule 12    for_instr -> FOR IPAREN sing_val exp_logic PUNTOCOMA op_idec RPAREN ILLAVE sent RLLAVE
+Rule 13    while_instr -> WHILE IPAREN exp_logic RPAREN ILLAVE sent RLLAVE
+Rule 14    print -> SYSTEM PUNTO OUT PUNTO PRINTL IPAREN valor_cadena RPAREN PUNTOCOMA
+Rule 15    dec_val -> tipo ID rest_dec PUNTOCOMA
+Rule 16    rest_dec -> COMA ID rest_dec
+Rule 17    rest_dec -> <empty>
+Rule 18    sing_val -> ID ASING term PUNTOCOMA
+Rule 19    sing_val -> ID ASING exp_arit PUNTOCOMA
+Rule 20    dec_array -> ICORCH RCORCH ID PUNTOCOMA
+Rule 21    tipo -> INT
+Rule 22    tipo -> FLOAT
+Rule 23    tipo -> CHAR
+Rule 24    tipo -> DOUBLE
+Rule 25    tipo -> BOOLEAN
+Rule 26    tipo -> STRING
+Rule 27    exp_logic -> exp_rel
+Rule 28    exp_logic -> term_bool
+Rule 29    exp_logic -> exp_logic AND exp_logic
+Rule 30    exp_logic -> exp_logic OR exp_logic
+Rule 31    exp_logic -> NOT exp_logic
+Rule 32    exp_rel -> exp_arit op_rel exp_arit
+Rule 33    exp_rel -> exp_rel op_rel term
+Rule 34    exp_arit -> exp_arit MAS term_arit
+Rule 35    exp_arit -> exp_arit MENOS term_arit
+Rule 36    exp_arit -> term_arit
+Rule 37    term_arit -> term_arit MULT fact_arit
+Rule 38    term_arit -> term_arit DIV fact_arit
+Rule 39    term_arit -> fact_arit
+Rule 40    fact_arit -> IPAREN exp_arit RPAREN
+Rule 41    fact_arit -> ID
+Rule 42    fact_arit -> ENTERO
+Rule 43    fact_arit -> DECIMAL
+Rule 44    valor_cadena -> CADENA
+Rule 45    valor_cadena -> CADENA MAS ID
+Rule 46    valor_cadena -> CADENA MAS ENTERO
+Rule 47    op_rel -> IGUAL
+Rule 48    op_rel -> MAYOR
+Rule 49    op_rel -> MENOR
+Rule 50    op_rel -> DIF
+Rule 51    op_rel -> MAYORIGUAL
+Rule 52    op_rel -> MENORIGUAL
+Rule 53    term -> fact_arit
+Rule 54    term -> term_bool
+Rule 55    term_bool -> TRUE
+Rule 56    term_bool -> FALSE
+Rule 57    op_idec -> ID INC
+Rule 58    op_idec -> ID DEC
+Rule 59    op_idec -> DEC ID
+Rule 60    op_idec -> INC ID
+Rule 61    empty -> <empty>
+
+Terminals, with rules where they appear
+
+AND                  : 29
+ASING                : 18 19
+BOOLEAN              : 25
+CADENA               : 44 45 46
+CHAR                 : 23
+COMA                 : 16
+DEC                  : 58 59
+DECIMAL              : 43
+DIF                  : 50
+DIV                  : 38
+DOUBLE               : 24
+ELSE                 : 11
+ENTERO               : 42 46
+FALSE                : 56
+FLOAT                : 22
+FOR                  : 12
+ICORCH               : 20
+ID                   : 15 16 18 19 20 41 45 57 58 59 60
+IF                   : 10 11
+IGUAL                : 47
+ILLAVE               : 10 11 11 12 13
+INC                  : 57 60
+INT                  : 21
+IPAREN               : 10 11 12 13 14 40
+MAS                  : 34 45 46
+MAYOR                : 48
+MAYORIGUAL           : 51
+MENOR                : 49
+MENORIGUAL           : 52
+MENOS                : 35
+MULT                 : 37
+NOT                  : 31
+OR                   : 30
+OUT                  : 14
+PRINTL               : 14
+PUNTO                : 14 14
+PUNTOCOMA            : 12 14 15 18 19 20
+RCORCH               : 20
+RLLAVE               : 10 11 11 12 13
+RPAREN               : 10 11 12 13 14 40
+STRING               : 26
+SYSTEM               : 14
+TRUE                 : 55
+WHILE                : 13
+error                : 
+
+Nonterminals, with rules where they appear
+
+dec_array            : 8
+dec_val              : 6
+empty                : 9
+exp_arit             : 19 32 32 34 35 40
+exp_logic            : 10 11 12 13 29 29 30 30 31
+exp_rel              : 27 33
+fact_arit            : 37 38 39 53
+for_instr            : 3
+if_instr             : 2
+op_idec              : 12
+op_rel               : 32 33
+print                : 5
+program              : 0
+rest_dec             : 15 16
+sent                 : 1 10 11 11 12 13
+sing_val             : 7 12
+term                 : 18 33
+term_arit            : 34 35 36 37 38
+term_bool            : 28 54
+tipo                 : 15
+valor_cadena         : 14
+while_instr          : 4
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . program
+    (1) program -> . sent
+    (2) sent -> . if_instr
+    (3) sent -> . for_instr
+    (4) sent -> . while_instr
+    (5) sent -> . print
+    (6) sent -> . dec_val
+    (7) sent -> . sing_val
+    (8) sent -> . dec_array
+    (9) sent -> . empty
+    (10) if_instr -> . IF IPAREN exp_logic RPAREN ILLAVE sent RLLAVE
+    (11) if_instr -> . IF IPAREN exp_logic RPAREN ILLAVE sent RLLAVE ELSE ILLAVE sent RLLAVE
+    (12) for_instr -> . FOR IPAREN sing_val exp_logic PUNTOCOMA op_idec RPAREN ILLAVE sent RLLAVE
+    (13) while_instr -> . WHILE IPAREN exp_logic RPAREN ILLAVE sent RLLAVE
+    (14) print -> . SYSTEM PUNTO OUT PUNTO PRINTL IPAREN valor_cadena RPAREN PUNTOCOMA
+    (15) dec_val -> . tipo ID rest_dec PUNTOCOMA
+    (18) sing_val -> . ID ASING term PUNTOCOMA
+    (19) sing_val -> . ID ASING exp_arit PUNTOCOMA
+    (20) dec_array -> . ICORCH RCORCH ID PUNTOCOMA
+    (61) empty -> .
+    (21) tipo -> . INT
+    (22) tipo -> . FLOAT
+    (23) tipo -> . CHAR
+    (24) tipo -> . DOUBLE
+    (25) tipo -> . BOOLEAN
+    (26) tipo -> . STRING
+
+    IF              shift and go to state 11
+    FOR             shift and go to state 12
+    WHILE           shift and go to state 13
+    SYSTEM          shift and go to state 14
+    ID              shift and go to state 16
+    ICORCH          shift and go to state 17
+    $end            reduce using rule 61 (empty -> .)
+    INT             shift and go to state 18
+    FLOAT           shift and go to state 19
+    CHAR            shift and go to state 20
+    DOUBLE          shift and go to state 21
+    BOOLEAN         shift and go to state 22
+    STRING          shift and go to state 23
+
+    program                        shift and go to state 1
+    sent                           shift and go to state 2
+    if_instr                       shift and go to state 3
+    for_instr                      shift and go to state 4
+    while_instr                    shift and go to state 5
+    print                          shift and go to state 6
+    dec_val                        shift and go to state 7
+    sing_val                       shift and go to state 8
+    dec_array                      shift and go to state 9
+    empty                          shift and go to state 10
+    tipo                           shift and go to state 15
+
+state 1
+
+    (0) S' -> program .
+
+
+
+state 2
+
+    (1) program -> sent .
+
+    $end            reduce using rule 1 (program -> sent .)
+
+
+state 3
+
+    (2) sent -> if_instr .
+
+    $end            reduce using rule 2 (sent -> if_instr .)
+    RLLAVE          reduce using rule 2 (sent -> if_instr .)
+
+
+state 4
+
+    (3) sent -> for_instr .
+
+    $end            reduce using rule 3 (sent -> for_instr .)
+    RLLAVE          reduce using rule 3 (sent -> for_instr .)
+
+
+state 5
+
+    (4) sent -> while_instr .
+
+    $end            reduce using rule 4 (sent -> while_instr .)
+    RLLAVE          reduce using rule 4 (sent -> while_instr .)
+
+
+state 6
+
+    (5) sent -> print .
+
+    $end            reduce using rule 5 (sent -> print .)
+    RLLAVE          reduce using rule 5 (sent -> print .)
+
+
+state 7
+
+    (6) sent -> dec_val .
+
+    $end            reduce using rule 6 (sent -> dec_val .)
+    RLLAVE          reduce using rule 6 (sent -> dec_val .)
+
+
+state 8
+
+    (7) sent -> sing_val .
+
+    $end            reduce using rule 7 (sent -> sing_val .)
+    RLLAVE          reduce using rule 7 (sent -> sing_val .)
+
+
+state 9
+
+    (8) sent -> dec_array .
+
+    $end            reduce using rule 8 (sent -> dec_array .)
+    RLLAVE          reduce using rule 8 (sent -> dec_array .)
+
+
+state 10
+
+    (9) sent -> empty .
+
+    $end            reduce using rule 9 (sent -> empty .)
+    RLLAVE          reduce using rule 9 (sent -> empty .)
+
+
+state 11
+
+    (10) if_instr -> IF . IPAREN exp_logic RPAREN ILLAVE sent RLLAVE
+    (11) if_instr -> IF . IPAREN exp_logic RPAREN ILLAVE sent RLLAVE ELSE ILLAVE sent RLLAVE
+
+    IPAREN          shift and go to state 24
+
+
+state 12
+
+    (12) for_instr -> FOR . IPAREN sing_val exp_logic PUNTOCOMA op_idec RPAREN ILLAVE sent RLLAVE
+
+    IPAREN          shift and go to state 25
+
+
+state 13
+
+    (13) while_instr -> WHILE . IPAREN exp_logic RPAREN ILLAVE sent RLLAVE
+
+    IPAREN          shift and go to state 26
+
+
+state 14
+
+    (14) print -> SYSTEM . PUNTO OUT PUNTO PRINTL IPAREN valor_cadena RPAREN PUNTOCOMA
+
+    PUNTO           shift and go to state 27
+
+
+state 15
+
+    (15) dec_val -> tipo . ID rest_dec PUNTOCOMA
+
+    ID              shift and go to state 28
+
+
+state 16
+
+    (18) sing_val -> ID . ASING term PUNTOCOMA
+    (19) sing_val -> ID . ASING exp_arit PUNTOCOMA
+
+    ASING           shift and go to state 29
+
+
+state 17
+
+    (20) dec_array -> ICORCH . RCORCH ID PUNTOCOMA
+
+    RCORCH          shift and go to state 30
+
+
+state 18
+
+    (21) tipo -> INT .
+
+    ID              reduce using rule 21 (tipo -> INT .)
+
+
+state 19
+
+    (22) tipo -> FLOAT .
+
+    ID              reduce using rule 22 (tipo -> FLOAT .)
+
+
+state 20
+
+    (23) tipo -> CHAR .
+
+    ID              reduce using rule 23 (tipo -> CHAR .)
+
+
+state 21
+
+    (24) tipo -> DOUBLE .
+
+    ID              reduce using rule 24 (tipo -> DOUBLE .)
+
+
+state 22
+
+    (25) tipo -> BOOLEAN .
+
+    ID              reduce using rule 25 (tipo -> BOOLEAN .)
+
+
+state 23
+
+    (26) tipo -> STRING .
+
+    ID              reduce using rule 26 (tipo -> STRING .)
+
+
+state 24
+
+    (10) if_instr -> IF IPAREN . exp_logic RPAREN ILLAVE sent RLLAVE
+    (11) if_instr -> IF IPAREN . exp_logic RPAREN ILLAVE sent RLLAVE ELSE ILLAVE sent RLLAVE
+    (27) exp_logic -> . exp_rel
+    (28) exp_logic -> . term_bool
+    (29) exp_logic -> . exp_logic AND exp_logic
+    (30) exp_logic -> . exp_logic OR exp_logic
+    (31) exp_logic -> . NOT exp_logic
+    (32) exp_rel -> . exp_arit op_rel exp_arit
+    (33) exp_rel -> . exp_rel op_rel term
+    (55) term_bool -> . TRUE
+    (56) term_bool -> . FALSE
+    (34) exp_arit -> . exp_arit MAS term_arit
+    (35) exp_arit -> . exp_arit MENOS term_arit
+    (36) exp_arit -> . term_arit
+    (37) term_arit -> . term_arit MULT fact_arit
+    (38) term_arit -> . term_arit DIV fact_arit
+    (39) term_arit -> . fact_arit
+    (40) fact_arit -> . IPAREN exp_arit RPAREN
+    (41) fact_arit -> . ID
+    (42) fact_arit -> . ENTERO
+    (43) fact_arit -> . DECIMAL
+
+    NOT             shift and go to state 35
+    TRUE            shift and go to state 37
+    FALSE           shift and go to state 38
+    IPAREN          shift and go to state 31
+    ID              shift and go to state 41
+    ENTERO          shift and go to state 42
+    DECIMAL         shift and go to state 43
+
+    exp_logic                      shift and go to state 32
+    exp_rel                        shift and go to state 33
+    term_bool                      shift and go to state 34
+    exp_arit                       shift and go to state 36
+    term_arit                      shift and go to state 39
+    fact_arit                      shift and go to state 40
+
+state 25
+
+    (12) for_instr -> FOR IPAREN . sing_val exp_logic PUNTOCOMA op_idec RPAREN ILLAVE sent RLLAVE
+    (18) sing_val -> . ID ASING term PUNTOCOMA
+    (19) sing_val -> . ID ASING exp_arit PUNTOCOMA
+
+    ID              shift and go to state 16
+
+    sing_val                       shift and go to state 44
+
+state 26
+
+    (13) while_instr -> WHILE IPAREN . exp_logic RPAREN ILLAVE sent RLLAVE
+    (27) exp_logic -> . exp_rel
+    (28) exp_logic -> . term_bool
+    (29) exp_logic -> . exp_logic AND exp_logic
+    (30) exp_logic -> . exp_logic OR exp_logic
+    (31) exp_logic -> . NOT exp_logic
+    (32) exp_rel -> . exp_arit op_rel exp_arit
+    (33) exp_rel -> . exp_rel op_rel term
+    (55) term_bool -> . TRUE
+    (56) term_bool -> . FALSE
+    (34) exp_arit -> . exp_arit MAS term_arit
+    (35) exp_arit -> . exp_arit MENOS term_arit
+    (36) exp_arit -> . term_arit
+    (37) term_arit -> . term_arit MULT fact_arit
+    (38) term_arit -> . term_arit DIV fact_arit
+    (39) term_arit -> . fact_arit
+    (40) fact_arit -> . IPAREN exp_arit RPAREN
+    (41) fact_arit -> . ID
+    (42) fact_arit -> . ENTERO
+    (43) fact_arit -> . DECIMAL
+
+    NOT             shift and go to state 35
+    TRUE            shift and go to state 37
+    FALSE           shift and go to state 38
+    IPAREN          shift and go to state 31
+    ID              shift and go to state 41
+    ENTERO          shift and go to state 42
+    DECIMAL         shift and go to state 43
+
+    exp_logic                      shift and go to state 45
+    exp_rel                        shift and go to state 33
+    term_bool                      shift and go to state 34
+    exp_arit                       shift and go to state 36
+    term_arit                      shift and go to state 39
+    fact_arit                      shift and go to state 40
+
+state 27
+
+    (14) print -> SYSTEM PUNTO . OUT PUNTO PRINTL IPAREN valor_cadena RPAREN PUNTOCOMA
+
+    OUT             shift and go to state 46
+
+
+state 28
+
+    (15) dec_val -> tipo ID . rest_dec PUNTOCOMA
+    (16) rest_dec -> . COMA ID rest_dec
+    (17) rest_dec -> .
+
+    COMA            shift and go to state 48
+    PUNTOCOMA       reduce using rule 17 (rest_dec -> .)
+
+    rest_dec                       shift and go to state 47
+
+state 29
+
+    (18) sing_val -> ID ASING . term PUNTOCOMA
+    (19) sing_val -> ID ASING . exp_arit PUNTOCOMA
+    (53) term -> . fact_arit
+    (54) term -> . term_bool
+    (34) exp_arit -> . exp_arit MAS term_arit
+    (35) exp_arit -> . exp_arit MENOS term_arit
+    (36) exp_arit -> . term_arit
+    (40) fact_arit -> . IPAREN exp_arit RPAREN
+    (41) fact_arit -> . ID
+    (42) fact_arit -> . ENTERO
+    (43) fact_arit -> . DECIMAL
+    (55) term_bool -> . TRUE
+    (56) term_bool -> . FALSE
+    (37) term_arit -> . term_arit MULT fact_arit
+    (38) term_arit -> . term_arit DIV fact_arit
+    (39) term_arit -> . fact_arit
+
+    IPAREN          shift and go to state 31
+    ID              shift and go to state 41
+    ENTERO          shift and go to state 42
+    DECIMAL         shift and go to state 43
+    TRUE            shift and go to state 37
+    FALSE           shift and go to state 38
+
+    term                           shift and go to state 49
+    exp_arit                       shift and go to state 50
+    fact_arit                      shift and go to state 51
+    term_bool                      shift and go to state 52
+    term_arit                      shift and go to state 39
+
+state 30
+
+    (20) dec_array -> ICORCH RCORCH . ID PUNTOCOMA
+
+    ID              shift and go to state 53
+
+
+state 31
+
+    (40) fact_arit -> IPAREN . exp_arit RPAREN
+    (34) exp_arit -> . exp_arit MAS term_arit
+    (35) exp_arit -> . exp_arit MENOS term_arit
+    (36) exp_arit -> . term_arit
+    (37) term_arit -> . term_arit MULT fact_arit
+    (38) term_arit -> . term_arit DIV fact_arit
+    (39) term_arit -> . fact_arit
+    (40) fact_arit -> . IPAREN exp_arit RPAREN
+    (41) fact_arit -> . ID
+    (42) fact_arit -> . ENTERO
+    (43) fact_arit -> . DECIMAL
+
+    IPAREN          shift and go to state 31
+    ID              shift and go to state 41
+    ENTERO          shift and go to state 42
+    DECIMAL         shift and go to state 43
+
+    exp_arit                       shift and go to state 54
+    term_arit                      shift and go to state 39
+    fact_arit                      shift and go to state 40
+
+state 32
+
+    (10) if_instr -> IF IPAREN exp_logic . RPAREN ILLAVE sent RLLAVE
+    (11) if_instr -> IF IPAREN exp_logic . RPAREN ILLAVE sent RLLAVE ELSE ILLAVE sent RLLAVE
+    (29) exp_logic -> exp_logic . AND exp_logic
+    (30) exp_logic -> exp_logic . OR exp_logic
+
+    RPAREN          shift and go to state 55
+    AND             shift and go to state 56
+    OR              shift and go to state 57
+
+
+state 33
+
+    (27) exp_logic -> exp_rel .
+    (33) exp_rel -> exp_rel . op_rel term
+    (47) op_rel -> . IGUAL
+    (48) op_rel -> . MAYOR
+    (49) op_rel -> . MENOR
+    (50) op_rel -> . DIF
+    (51) op_rel -> . MAYORIGUAL
+    (52) op_rel -> . MENORIGUAL
+
+    RPAREN          reduce using rule 27 (exp_logic -> exp_rel .)
+    AND             reduce using rule 27 (exp_logic -> exp_rel .)
+    OR              reduce using rule 27 (exp_logic -> exp_rel .)
+    PUNTOCOMA       reduce using rule 27 (exp_logic -> exp_rel .)
+    IGUAL           shift and go to state 59
+    MAYOR           shift and go to state 60
+    MENOR           shift and go to state 61
+    DIF             shift and go to state 62
+    MAYORIGUAL      shift and go to state 63
+    MENORIGUAL      shift and go to state 64
+
+    op_rel                         shift and go to state 58
+
+state 34
+
+    (28) exp_logic -> term_bool .
+
+    RPAREN          reduce using rule 28 (exp_logic -> term_bool .)
+    AND             reduce using rule 28 (exp_logic -> term_bool .)
+    OR              reduce using rule 28 (exp_logic -> term_bool .)
+    PUNTOCOMA       reduce using rule 28 (exp_logic -> term_bool .)
+
+
+state 35
+
+    (31) exp_logic -> NOT . exp_logic
+    (27) exp_logic -> . exp_rel
+    (28) exp_logic -> . term_bool
+    (29) exp_logic -> . exp_logic AND exp_logic
+    (30) exp_logic -> . exp_logic OR exp_logic
+    (31) exp_logic -> . NOT exp_logic
+    (32) exp_rel -> . exp_arit op_rel exp_arit
+    (33) exp_rel -> . exp_rel op_rel term
+    (55) term_bool -> . TRUE
+    (56) term_bool -> . FALSE
+    (34) exp_arit -> . exp_arit MAS term_arit
+    (35) exp_arit -> . exp_arit MENOS term_arit
+    (36) exp_arit -> . term_arit
+    (37) term_arit -> . term_arit MULT fact_arit
+    (38) term_arit -> . term_arit DIV fact_arit
+    (39) term_arit -> . fact_arit
+    (40) fact_arit -> . IPAREN exp_arit RPAREN
+    (41) fact_arit -> . ID
+    (42) fact_arit -> . ENTERO
+    (43) fact_arit -> . DECIMAL
+
+    NOT             shift and go to state 35
+    TRUE            shift and go to state 37
+    FALSE           shift and go to state 38
+    IPAREN          shift and go to state 31
+    ID              shift and go to state 41
+    ENTERO          shift and go to state 42
+    DECIMAL         shift and go to state 43
+
+    exp_logic                      shift and go to state 65
+    exp_rel                        shift and go to state 33
+    term_bool                      shift and go to state 34
+    exp_arit                       shift and go to state 36
+    term_arit                      shift and go to state 39
+    fact_arit                      shift and go to state 40
+
+state 36
+
+    (32) exp_rel -> exp_arit . op_rel exp_arit
+    (34) exp_arit -> exp_arit . MAS term_arit
+    (35) exp_arit -> exp_arit . MENOS term_arit
+    (47) op_rel -> . IGUAL
+    (48) op_rel -> . MAYOR
+    (49) op_rel -> . MENOR
+    (50) op_rel -> . DIF
+    (51) op_rel -> . MAYORIGUAL
+    (52) op_rel -> . MENORIGUAL
+
+    MAS             shift and go to state 67
+    MENOS           shift and go to state 68
+    IGUAL           shift and go to state 59
+    MAYOR           shift and go to state 60
+    MENOR           shift and go to state 61
+    DIF             shift and go to state 62
+    MAYORIGUAL      shift and go to state 63
+    MENORIGUAL      shift and go to state 64
+
+    op_rel                         shift and go to state 66
+
+state 37
+
+    (55) term_bool -> TRUE .
+
+    RPAREN          reduce using rule 55 (term_bool -> TRUE .)
+    AND             reduce using rule 55 (term_bool -> TRUE .)
+    OR              reduce using rule 55 (term_bool -> TRUE .)
+    PUNTOCOMA       reduce using rule 55 (term_bool -> TRUE .)
+    IGUAL           reduce using rule 55 (term_bool -> TRUE .)
+    MAYOR           reduce using rule 55 (term_bool -> TRUE .)
+    MENOR           reduce using rule 55 (term_bool -> TRUE .)
+    DIF             reduce using rule 55 (term_bool -> TRUE .)
+    MAYORIGUAL      reduce using rule 55 (term_bool -> TRUE .)
+    MENORIGUAL      reduce using rule 55 (term_bool -> TRUE .)
+
+
+state 38
+
+    (56) term_bool -> FALSE .
+
+    RPAREN          reduce using rule 56 (term_bool -> FALSE .)
+    AND             reduce using rule 56 (term_bool -> FALSE .)
+    OR              reduce using rule 56 (term_bool -> FALSE .)
+    PUNTOCOMA       reduce using rule 56 (term_bool -> FALSE .)
+    IGUAL           reduce using rule 56 (term_bool -> FALSE .)
+    MAYOR           reduce using rule 56 (term_bool -> FALSE .)
+    MENOR           reduce using rule 56 (term_bool -> FALSE .)
+    DIF             reduce using rule 56 (term_bool -> FALSE .)
+    MAYORIGUAL      reduce using rule 56 (term_bool -> FALSE .)
+    MENORIGUAL      reduce using rule 56 (term_bool -> FALSE .)
+
+
+state 39
+
+    (36) exp_arit -> term_arit .
+    (37) term_arit -> term_arit . MULT fact_arit
+    (38) term_arit -> term_arit . DIV fact_arit
+
+    MAS             reduce using rule 36 (exp_arit -> term_arit .)
+    MENOS           reduce using rule 36 (exp_arit -> term_arit .)
+    IGUAL           reduce using rule 36 (exp_arit -> term_arit .)
+    MAYOR           reduce using rule 36 (exp_arit -> term_arit .)
+    MENOR           reduce using rule 36 (exp_arit -> term_arit .)
+    DIF             reduce using rule 36 (exp_arit -> term_arit .)
+    MAYORIGUAL      reduce using rule 36 (exp_arit -> term_arit .)
+    MENORIGUAL      reduce using rule 36 (exp_arit -> term_arit .)
+    PUNTOCOMA       reduce using rule 36 (exp_arit -> term_arit .)
+    RPAREN          reduce using rule 36 (exp_arit -> term_arit .)
+    AND             reduce using rule 36 (exp_arit -> term_arit .)
+    OR              reduce using rule 36 (exp_arit -> term_arit .)
+    MULT            shift and go to state 69
+    DIV             shift and go to state 70
+
+
+state 40
+
+    (39) term_arit -> fact_arit .
+
+    MULT            reduce using rule 39 (term_arit -> fact_arit .)
+    DIV             reduce using rule 39 (term_arit -> fact_arit .)
+    MAS             reduce using rule 39 (term_arit -> fact_arit .)
+    MENOS           reduce using rule 39 (term_arit -> fact_arit .)
+    IGUAL           reduce using rule 39 (term_arit -> fact_arit .)
+    MAYOR           reduce using rule 39 (term_arit -> fact_arit .)
+    MENOR           reduce using rule 39 (term_arit -> fact_arit .)
+    DIF             reduce using rule 39 (term_arit -> fact_arit .)
+    MAYORIGUAL      reduce using rule 39 (term_arit -> fact_arit .)
+    MENORIGUAL      reduce using rule 39 (term_arit -> fact_arit .)
+    RPAREN          reduce using rule 39 (term_arit -> fact_arit .)
+    AND             reduce using rule 39 (term_arit -> fact_arit .)
+    OR              reduce using rule 39 (term_arit -> fact_arit .)
+    PUNTOCOMA       reduce using rule 39 (term_arit -> fact_arit .)
+
+
+state 41
+
+    (41) fact_arit -> ID .
+
+    MULT            reduce using rule 41 (fact_arit -> ID .)
+    DIV             reduce using rule 41 (fact_arit -> ID .)
+    MAS             reduce using rule 41 (fact_arit -> ID .)
+    MENOS           reduce using rule 41 (fact_arit -> ID .)
+    IGUAL           reduce using rule 41 (fact_arit -> ID .)
+    MAYOR           reduce using rule 41 (fact_arit -> ID .)
+    MENOR           reduce using rule 41 (fact_arit -> ID .)
+    DIF             reduce using rule 41 (fact_arit -> ID .)
+    MAYORIGUAL      reduce using rule 41 (fact_arit -> ID .)
+    MENORIGUAL      reduce using rule 41 (fact_arit -> ID .)
+    PUNTOCOMA       reduce using rule 41 (fact_arit -> ID .)
+    RPAREN          reduce using rule 41 (fact_arit -> ID .)
+    AND             reduce using rule 41 (fact_arit -> ID .)
+    OR              reduce using rule 41 (fact_arit -> ID .)
+
+
+state 42
+
+    (42) fact_arit -> ENTERO .
+
+    MULT            reduce using rule 42 (fact_arit -> ENTERO .)
+    DIV             reduce using rule 42 (fact_arit -> ENTERO .)
+    MAS             reduce using rule 42 (fact_arit -> ENTERO .)
+    MENOS           reduce using rule 42 (fact_arit -> ENTERO .)
+    IGUAL           reduce using rule 42 (fact_arit -> ENTERO .)
+    MAYOR           reduce using rule 42 (fact_arit -> ENTERO .)
+    MENOR           reduce using rule 42 (fact_arit -> ENTERO .)
+    DIF             reduce using rule 42 (fact_arit -> ENTERO .)
+    MAYORIGUAL      reduce using rule 42 (fact_arit -> ENTERO .)
+    MENORIGUAL      reduce using rule 42 (fact_arit -> ENTERO .)
+    PUNTOCOMA       reduce using rule 42 (fact_arit -> ENTERO .)
+    RPAREN          reduce using rule 42 (fact_arit -> ENTERO .)
+    AND             reduce using rule 42 (fact_arit -> ENTERO .)
+    OR              reduce using rule 42 (fact_arit -> ENTERO .)
+
+
+state 43
+
+    (43) fact_arit -> DECIMAL .
+
+    MULT            reduce using rule 43 (fact_arit -> DECIMAL .)
+    DIV             reduce using rule 43 (fact_arit -> DECIMAL .)
+    MAS             reduce using rule 43 (fact_arit -> DECIMAL .)
+    MENOS           reduce using rule 43 (fact_arit -> DECIMAL .)
+    IGUAL           reduce using rule 43 (fact_arit -> DECIMAL .)
+    MAYOR           reduce using rule 43 (fact_arit -> DECIMAL .)
+    MENOR           reduce using rule 43 (fact_arit -> DECIMAL .)
+    DIF             reduce using rule 43 (fact_arit -> DECIMAL .)
+    MAYORIGUAL      reduce using rule 43 (fact_arit -> DECIMAL .)
+    MENORIGUAL      reduce using rule 43 (fact_arit -> DECIMAL .)
+    PUNTOCOMA       reduce using rule 43 (fact_arit -> DECIMAL .)
+    RPAREN          reduce using rule 43 (fact_arit -> DECIMAL .)
+    AND             reduce using rule 43 (fact_arit -> DECIMAL .)
+    OR              reduce using rule 43 (fact_arit -> DECIMAL .)
+
+
+state 44
+
+    (12) for_instr -> FOR IPAREN sing_val . exp_logic PUNTOCOMA op_idec RPAREN ILLAVE sent RLLAVE
+    (27) exp_logic -> . exp_rel
+    (28) exp_logic -> . term_bool
+    (29) exp_logic -> . exp_logic AND exp_logic
+    (30) exp_logic -> . exp_logic OR exp_logic
+    (31) exp_logic -> . NOT exp_logic
+    (32) exp_rel -> . exp_arit op_rel exp_arit
+    (33) exp_rel -> . exp_rel op_rel term
+    (55) term_bool -> . TRUE
+    (56) term_bool -> . FALSE
+    (34) exp_arit -> . exp_arit MAS term_arit
+    (35) exp_arit -> . exp_arit MENOS term_arit
+    (36) exp_arit -> . term_arit
+    (37) term_arit -> . term_arit MULT fact_arit
+    (38) term_arit -> . term_arit DIV fact_arit
+    (39) term_arit -> . fact_arit
+    (40) fact_arit -> . IPAREN exp_arit RPAREN
+    (41) fact_arit -> . ID
+    (42) fact_arit -> . ENTERO
+    (43) fact_arit -> . DECIMAL
+
+    NOT             shift and go to state 35
+    TRUE            shift and go to state 37
+    FALSE           shift and go to state 38
+    IPAREN          shift and go to state 31
+    ID              shift and go to state 41
+    ENTERO          shift and go to state 42
+    DECIMAL         shift and go to state 43
+
+    exp_logic                      shift and go to state 71
+    exp_rel                        shift and go to state 33
+    term_bool                      shift and go to state 34
+    exp_arit                       shift and go to state 36
+    term_arit                      shift and go to state 39
+    fact_arit                      shift and go to state 40
+
+state 45
+
+    (13) while_instr -> WHILE IPAREN exp_logic . RPAREN ILLAVE sent RLLAVE
+    (29) exp_logic -> exp_logic . AND exp_logic
+    (30) exp_logic -> exp_logic . OR exp_logic
+
+    RPAREN          shift and go to state 72
+    AND             shift and go to state 56
+    OR              shift and go to state 57
+
+
+state 46
+
+    (14) print -> SYSTEM PUNTO OUT . PUNTO PRINTL IPAREN valor_cadena RPAREN PUNTOCOMA
+
+    PUNTO           shift and go to state 73
+
+
+state 47
+
+    (15) dec_val -> tipo ID rest_dec . PUNTOCOMA
+
+    PUNTOCOMA       shift and go to state 74
+
+
+state 48
+
+    (16) rest_dec -> COMA . ID rest_dec
+
+    ID              shift and go to state 75
+
+
+state 49
+
+    (18) sing_val -> ID ASING term . PUNTOCOMA
+
+    PUNTOCOMA       shift and go to state 76
+
+
+state 50
+
+    (19) sing_val -> ID ASING exp_arit . PUNTOCOMA
+    (34) exp_arit -> exp_arit . MAS term_arit
+    (35) exp_arit -> exp_arit . MENOS term_arit
+
+    PUNTOCOMA       shift and go to state 77
+    MAS             shift and go to state 67
+    MENOS           shift and go to state 68
+
+
+state 51
+
+    (53) term -> fact_arit .
+    (39) term_arit -> fact_arit .
+
+  ! reduce/reduce conflict for PUNTOCOMA resolved using rule 39 (term_arit -> fact_arit .)
+    MULT            reduce using rule 39 (term_arit -> fact_arit .)
+    DIV             reduce using rule 39 (term_arit -> fact_arit .)
+    PUNTOCOMA       reduce using rule 39 (term_arit -> fact_arit .)
+    MAS             reduce using rule 39 (term_arit -> fact_arit .)
+    MENOS           reduce using rule 39 (term_arit -> fact_arit .)
+
+  ! PUNTOCOMA       [ reduce using rule 53 (term -> fact_arit .) ]
+
+
+state 52
+
+    (54) term -> term_bool .
+
+    PUNTOCOMA       reduce using rule 54 (term -> term_bool .)
+    IGUAL           reduce using rule 54 (term -> term_bool .)
+    MAYOR           reduce using rule 54 (term -> term_bool .)
+    MENOR           reduce using rule 54 (term -> term_bool .)
+    DIF             reduce using rule 54 (term -> term_bool .)
+    MAYORIGUAL      reduce using rule 54 (term -> term_bool .)
+    MENORIGUAL      reduce using rule 54 (term -> term_bool .)
+    RPAREN          reduce using rule 54 (term -> term_bool .)
+    AND             reduce using rule 54 (term -> term_bool .)
+    OR              reduce using rule 54 (term -> term_bool .)
+
+
+state 53
+
+    (20) dec_array -> ICORCH RCORCH ID . PUNTOCOMA
+
+    PUNTOCOMA       shift and go to state 78
+
+
+state 54
+
+    (40) fact_arit -> IPAREN exp_arit . RPAREN
+    (34) exp_arit -> exp_arit . MAS term_arit
+    (35) exp_arit -> exp_arit . MENOS term_arit
+
+    RPAREN          shift and go to state 79
+    MAS             shift and go to state 67
+    MENOS           shift and go to state 68
+
+
+state 55
+
+    (10) if_instr -> IF IPAREN exp_logic RPAREN . ILLAVE sent RLLAVE
+    (11) if_instr -> IF IPAREN exp_logic RPAREN . ILLAVE sent RLLAVE ELSE ILLAVE sent RLLAVE
+
+    ILLAVE          shift and go to state 80
+
+
+state 56
+
+    (29) exp_logic -> exp_logic AND . exp_logic
+    (27) exp_logic -> . exp_rel
+    (28) exp_logic -> . term_bool
+    (29) exp_logic -> . exp_logic AND exp_logic
+    (30) exp_logic -> . exp_logic OR exp_logic
+    (31) exp_logic -> . NOT exp_logic
+    (32) exp_rel -> . exp_arit op_rel exp_arit
+    (33) exp_rel -> . exp_rel op_rel term
+    (55) term_bool -> . TRUE
+    (56) term_bool -> . FALSE
+    (34) exp_arit -> . exp_arit MAS term_arit
+    (35) exp_arit -> . exp_arit MENOS term_arit
+    (36) exp_arit -> . term_arit
+    (37) term_arit -> . term_arit MULT fact_arit
+    (38) term_arit -> . term_arit DIV fact_arit
+    (39) term_arit -> . fact_arit
+    (40) fact_arit -> . IPAREN exp_arit RPAREN
+    (41) fact_arit -> . ID
+    (42) fact_arit -> . ENTERO
+    (43) fact_arit -> . DECIMAL
+
+    NOT             shift and go to state 35
+    TRUE            shift and go to state 37
+    FALSE           shift and go to state 38
+    IPAREN          shift and go to state 31
+    ID              shift and go to state 41
+    ENTERO          shift and go to state 42
+    DECIMAL         shift and go to state 43
+
+    exp_logic                      shift and go to state 81
+    exp_rel                        shift and go to state 33
+    term_bool                      shift and go to state 34
+    exp_arit                       shift and go to state 36
+    term_arit                      shift and go to state 39
+    fact_arit                      shift and go to state 40
+
+state 57
+
+    (30) exp_logic -> exp_logic OR . exp_logic
+    (27) exp_logic -> . exp_rel
+    (28) exp_logic -> . term_bool
+    (29) exp_logic -> . exp_logic AND exp_logic
+    (30) exp_logic -> . exp_logic OR exp_logic
+    (31) exp_logic -> . NOT exp_logic
+    (32) exp_rel -> . exp_arit op_rel exp_arit
+    (33) exp_rel -> . exp_rel op_rel term
+    (55) term_bool -> . TRUE
+    (56) term_bool -> . FALSE
+    (34) exp_arit -> . exp_arit MAS term_arit
+    (35) exp_arit -> . exp_arit MENOS term_arit
+    (36) exp_arit -> . term_arit
+    (37) term_arit -> . term_arit MULT fact_arit
+    (38) term_arit -> . term_arit DIV fact_arit
+    (39) term_arit -> . fact_arit
+    (40) fact_arit -> . IPAREN exp_arit RPAREN
+    (41) fact_arit -> . ID
+    (42) fact_arit -> . ENTERO
+    (43) fact_arit -> . DECIMAL
+
+    NOT             shift and go to state 35
+    TRUE            shift and go to state 37
+    FALSE           shift and go to state 38
+    IPAREN          shift and go to state 31
+    ID              shift and go to state 41
+    ENTERO          shift and go to state 42
+    DECIMAL         shift and go to state 43
+
+    exp_logic                      shift and go to state 82
+    exp_rel                        shift and go to state 33
+    term_bool                      shift and go to state 34
+    exp_arit                       shift and go to state 36
+    term_arit                      shift and go to state 39
+    fact_arit                      shift and go to state 40
+
+state 58
+
+    (33) exp_rel -> exp_rel op_rel . term
+    (53) term -> . fact_arit
+    (54) term -> . term_bool
+    (40) fact_arit -> . IPAREN exp_arit RPAREN
+    (41) fact_arit -> . ID
+    (42) fact_arit -> . ENTERO
+    (43) fact_arit -> . DECIMAL
+    (55) term_bool -> . TRUE
+    (56) term_bool -> . FALSE
+
+    IPAREN          shift and go to state 31
+    ID              shift and go to state 41
+    ENTERO          shift and go to state 42
+    DECIMAL         shift and go to state 43
+    TRUE            shift and go to state 37
+    FALSE           shift and go to state 38
+
+    term                           shift and go to state 83
+    fact_arit                      shift and go to state 84
+    term_bool                      shift and go to state 52
+
+state 59
+
+    (47) op_rel -> IGUAL .
+
+    IPAREN          reduce using rule 47 (op_rel -> IGUAL .)
+    ID              reduce using rule 47 (op_rel -> IGUAL .)
+    ENTERO          reduce using rule 47 (op_rel -> IGUAL .)
+    DECIMAL         reduce using rule 47 (op_rel -> IGUAL .)
+    TRUE            reduce using rule 47 (op_rel -> IGUAL .)
+    FALSE           reduce using rule 47 (op_rel -> IGUAL .)
+
+
+state 60
+
+    (48) op_rel -> MAYOR .
+
+    IPAREN          reduce using rule 48 (op_rel -> MAYOR .)
+    ID              reduce using rule 48 (op_rel -> MAYOR .)
+    ENTERO          reduce using rule 48 (op_rel -> MAYOR .)
+    DECIMAL         reduce using rule 48 (op_rel -> MAYOR .)
+    TRUE            reduce using rule 48 (op_rel -> MAYOR .)
+    FALSE           reduce using rule 48 (op_rel -> MAYOR .)
+
+
+state 61
+
+    (49) op_rel -> MENOR .
+
+    IPAREN          reduce using rule 49 (op_rel -> MENOR .)
+    ID              reduce using rule 49 (op_rel -> MENOR .)
+    ENTERO          reduce using rule 49 (op_rel -> MENOR .)
+    DECIMAL         reduce using rule 49 (op_rel -> MENOR .)
+    TRUE            reduce using rule 49 (op_rel -> MENOR .)
+    FALSE           reduce using rule 49 (op_rel -> MENOR .)
+
+
+state 62
+
+    (50) op_rel -> DIF .
+
+    IPAREN          reduce using rule 50 (op_rel -> DIF .)
+    ID              reduce using rule 50 (op_rel -> DIF .)
+    ENTERO          reduce using rule 50 (op_rel -> DIF .)
+    DECIMAL         reduce using rule 50 (op_rel -> DIF .)
+    TRUE            reduce using rule 50 (op_rel -> DIF .)
+    FALSE           reduce using rule 50 (op_rel -> DIF .)
+
+
+state 63
+
+    (51) op_rel -> MAYORIGUAL .
+
+    IPAREN          reduce using rule 51 (op_rel -> MAYORIGUAL .)
+    ID              reduce using rule 51 (op_rel -> MAYORIGUAL .)
+    ENTERO          reduce using rule 51 (op_rel -> MAYORIGUAL .)
+    DECIMAL         reduce using rule 51 (op_rel -> MAYORIGUAL .)
+    TRUE            reduce using rule 51 (op_rel -> MAYORIGUAL .)
+    FALSE           reduce using rule 51 (op_rel -> MAYORIGUAL .)
+
+
+state 64
+
+    (52) op_rel -> MENORIGUAL .
+
+    IPAREN          reduce using rule 52 (op_rel -> MENORIGUAL .)
+    ID              reduce using rule 52 (op_rel -> MENORIGUAL .)
+    ENTERO          reduce using rule 52 (op_rel -> MENORIGUAL .)
+    DECIMAL         reduce using rule 52 (op_rel -> MENORIGUAL .)
+    TRUE            reduce using rule 52 (op_rel -> MENORIGUAL .)
+    FALSE           reduce using rule 52 (op_rel -> MENORIGUAL .)
+
+
+state 65
+
+    (31) exp_logic -> NOT exp_logic .
+    (29) exp_logic -> exp_logic . AND exp_logic
+    (30) exp_logic -> exp_logic . OR exp_logic
+
+  ! shift/reduce conflict for AND resolved as shift
+  ! shift/reduce conflict for OR resolved as shift
+    RPAREN          reduce using rule 31 (exp_logic -> NOT exp_logic .)
+    PUNTOCOMA       reduce using rule 31 (exp_logic -> NOT exp_logic .)
+    AND             shift and go to state 56
+    OR              shift and go to state 57
+
+  ! AND             [ reduce using rule 31 (exp_logic -> NOT exp_logic .) ]
+  ! OR              [ reduce using rule 31 (exp_logic -> NOT exp_logic .) ]
+
+
+state 66
+
+    (32) exp_rel -> exp_arit op_rel . exp_arit
+    (34) exp_arit -> . exp_arit MAS term_arit
+    (35) exp_arit -> . exp_arit MENOS term_arit
+    (36) exp_arit -> . term_arit
+    (37) term_arit -> . term_arit MULT fact_arit
+    (38) term_arit -> . term_arit DIV fact_arit
+    (39) term_arit -> . fact_arit
+    (40) fact_arit -> . IPAREN exp_arit RPAREN
+    (41) fact_arit -> . ID
+    (42) fact_arit -> . ENTERO
+    (43) fact_arit -> . DECIMAL
+
+    IPAREN          shift and go to state 31
+    ID              shift and go to state 41
+    ENTERO          shift and go to state 42
+    DECIMAL         shift and go to state 43
+
+    exp_arit                       shift and go to state 85
+    term_arit                      shift and go to state 39
+    fact_arit                      shift and go to state 40
+
+state 67
+
+    (34) exp_arit -> exp_arit MAS . term_arit
+    (37) term_arit -> . term_arit MULT fact_arit
+    (38) term_arit -> . term_arit DIV fact_arit
+    (39) term_arit -> . fact_arit
+    (40) fact_arit -> . IPAREN exp_arit RPAREN
+    (41) fact_arit -> . ID
+    (42) fact_arit -> . ENTERO
+    (43) fact_arit -> . DECIMAL
+
+    IPAREN          shift and go to state 31
+    ID              shift and go to state 41
+    ENTERO          shift and go to state 42
+    DECIMAL         shift and go to state 43
+
+    term_arit                      shift and go to state 86
+    fact_arit                      shift and go to state 40
+
+state 68
+
+    (35) exp_arit -> exp_arit MENOS . term_arit
+    (37) term_arit -> . term_arit MULT fact_arit
+    (38) term_arit -> . term_arit DIV fact_arit
+    (39) term_arit -> . fact_arit
+    (40) fact_arit -> . IPAREN exp_arit RPAREN
+    (41) fact_arit -> . ID
+    (42) fact_arit -> . ENTERO
+    (43) fact_arit -> . DECIMAL
+
+    IPAREN          shift and go to state 31
+    ID              shift and go to state 41
+    ENTERO          shift and go to state 42
+    DECIMAL         shift and go to state 43
+
+    term_arit                      shift and go to state 87
+    fact_arit                      shift and go to state 40
+
+state 69
+
+    (37) term_arit -> term_arit MULT . fact_arit
+    (40) fact_arit -> . IPAREN exp_arit RPAREN
+    (41) fact_arit -> . ID
+    (42) fact_arit -> . ENTERO
+    (43) fact_arit -> . DECIMAL
+
+    IPAREN          shift and go to state 31
+    ID              shift and go to state 41
+    ENTERO          shift and go to state 42
+    DECIMAL         shift and go to state 43
+
+    fact_arit                      shift and go to state 88
+
+state 70
+
+    (38) term_arit -> term_arit DIV . fact_arit
+    (40) fact_arit -> . IPAREN exp_arit RPAREN
+    (41) fact_arit -> . ID
+    (42) fact_arit -> . ENTERO
+    (43) fact_arit -> . DECIMAL
+
+    IPAREN          shift and go to state 31
+    ID              shift and go to state 41
+    ENTERO          shift and go to state 42
+    DECIMAL         shift and go to state 43
+
+    fact_arit                      shift and go to state 89
+
+state 71
+
+    (12) for_instr -> FOR IPAREN sing_val exp_logic . PUNTOCOMA op_idec RPAREN ILLAVE sent RLLAVE
+    (29) exp_logic -> exp_logic . AND exp_logic
+    (30) exp_logic -> exp_logic . OR exp_logic
+
+    PUNTOCOMA       shift and go to state 90
+    AND             shift and go to state 56
+    OR              shift and go to state 57
+
+
+state 72
+
+    (13) while_instr -> WHILE IPAREN exp_logic RPAREN . ILLAVE sent RLLAVE
+
+    ILLAVE          shift and go to state 91
+
+
+state 73
+
+    (14) print -> SYSTEM PUNTO OUT PUNTO . PRINTL IPAREN valor_cadena RPAREN PUNTOCOMA
+
+    PRINTL          shift and go to state 92
+
+
+state 74
+
+    (15) dec_val -> tipo ID rest_dec PUNTOCOMA .
+
+    $end            reduce using rule 15 (dec_val -> tipo ID rest_dec PUNTOCOMA .)
+    RLLAVE          reduce using rule 15 (dec_val -> tipo ID rest_dec PUNTOCOMA .)
+
+
+state 75
+
+    (16) rest_dec -> COMA ID . rest_dec
+    (16) rest_dec -> . COMA ID rest_dec
+    (17) rest_dec -> .
+
+    COMA            shift and go to state 48
+    PUNTOCOMA       reduce using rule 17 (rest_dec -> .)
+
+    rest_dec                       shift and go to state 93
+
+state 76
+
+    (18) sing_val -> ID ASING term PUNTOCOMA .
+
+    $end            reduce using rule 18 (sing_val -> ID ASING term PUNTOCOMA .)
+    NOT             reduce using rule 18 (sing_val -> ID ASING term PUNTOCOMA .)
+    TRUE            reduce using rule 18 (sing_val -> ID ASING term PUNTOCOMA .)
+    FALSE           reduce using rule 18 (sing_val -> ID ASING term PUNTOCOMA .)
+    IPAREN          reduce using rule 18 (sing_val -> ID ASING term PUNTOCOMA .)
+    ID              reduce using rule 18 (sing_val -> ID ASING term PUNTOCOMA .)
+    ENTERO          reduce using rule 18 (sing_val -> ID ASING term PUNTOCOMA .)
+    DECIMAL         reduce using rule 18 (sing_val -> ID ASING term PUNTOCOMA .)
+    RLLAVE          reduce using rule 18 (sing_val -> ID ASING term PUNTOCOMA .)
+
+
+state 77
+
+    (19) sing_val -> ID ASING exp_arit PUNTOCOMA .
+
+    $end            reduce using rule 19 (sing_val -> ID ASING exp_arit PUNTOCOMA .)
+    NOT             reduce using rule 19 (sing_val -> ID ASING exp_arit PUNTOCOMA .)
+    TRUE            reduce using rule 19 (sing_val -> ID ASING exp_arit PUNTOCOMA .)
+    FALSE           reduce using rule 19 (sing_val -> ID ASING exp_arit PUNTOCOMA .)
+    IPAREN          reduce using rule 19 (sing_val -> ID ASING exp_arit PUNTOCOMA .)
+    ID              reduce using rule 19 (sing_val -> ID ASING exp_arit PUNTOCOMA .)
+    ENTERO          reduce using rule 19 (sing_val -> ID ASING exp_arit PUNTOCOMA .)
+    DECIMAL         reduce using rule 19 (sing_val -> ID ASING exp_arit PUNTOCOMA .)
+    RLLAVE          reduce using rule 19 (sing_val -> ID ASING exp_arit PUNTOCOMA .)
+
+
+state 78
+
+    (20) dec_array -> ICORCH RCORCH ID PUNTOCOMA .
+
+    $end            reduce using rule 20 (dec_array -> ICORCH RCORCH ID PUNTOCOMA .)
+    RLLAVE          reduce using rule 20 (dec_array -> ICORCH RCORCH ID PUNTOCOMA .)
+
+
+state 79
+
+    (40) fact_arit -> IPAREN exp_arit RPAREN .
+
+    MULT            reduce using rule 40 (fact_arit -> IPAREN exp_arit RPAREN .)
+    DIV             reduce using rule 40 (fact_arit -> IPAREN exp_arit RPAREN .)
+    MAS             reduce using rule 40 (fact_arit -> IPAREN exp_arit RPAREN .)
+    MENOS           reduce using rule 40 (fact_arit -> IPAREN exp_arit RPAREN .)
+    IGUAL           reduce using rule 40 (fact_arit -> IPAREN exp_arit RPAREN .)
+    MAYOR           reduce using rule 40 (fact_arit -> IPAREN exp_arit RPAREN .)
+    MENOR           reduce using rule 40 (fact_arit -> IPAREN exp_arit RPAREN .)
+    DIF             reduce using rule 40 (fact_arit -> IPAREN exp_arit RPAREN .)
+    MAYORIGUAL      reduce using rule 40 (fact_arit -> IPAREN exp_arit RPAREN .)
+    MENORIGUAL      reduce using rule 40 (fact_arit -> IPAREN exp_arit RPAREN .)
+    PUNTOCOMA       reduce using rule 40 (fact_arit -> IPAREN exp_arit RPAREN .)
+    RPAREN          reduce using rule 40 (fact_arit -> IPAREN exp_arit RPAREN .)
+    AND             reduce using rule 40 (fact_arit -> IPAREN exp_arit RPAREN .)
+    OR              reduce using rule 40 (fact_arit -> IPAREN exp_arit RPAREN .)
+
+
+state 80
+
+    (10) if_instr -> IF IPAREN exp_logic RPAREN ILLAVE . sent RLLAVE
+    (11) if_instr -> IF IPAREN exp_logic RPAREN ILLAVE . sent RLLAVE ELSE ILLAVE sent RLLAVE
+    (2) sent -> . if_instr
+    (3) sent -> . for_instr
+    (4) sent -> . while_instr
+    (5) sent -> . print
+    (6) sent -> . dec_val
+    (7) sent -> . sing_val
+    (8) sent -> . dec_array
+    (9) sent -> . empty
+    (10) if_instr -> . IF IPAREN exp_logic RPAREN ILLAVE sent RLLAVE
+    (11) if_instr -> . IF IPAREN exp_logic RPAREN ILLAVE sent RLLAVE ELSE ILLAVE sent RLLAVE
+    (12) for_instr -> . FOR IPAREN sing_val exp_logic PUNTOCOMA op_idec RPAREN ILLAVE sent RLLAVE
+    (13) while_instr -> . WHILE IPAREN exp_logic RPAREN ILLAVE sent RLLAVE
+    (14) print -> . SYSTEM PUNTO OUT PUNTO PRINTL IPAREN valor_cadena RPAREN PUNTOCOMA
+    (15) dec_val -> . tipo ID rest_dec PUNTOCOMA
+    (18) sing_val -> . ID ASING term PUNTOCOMA
+    (19) sing_val -> . ID ASING exp_arit PUNTOCOMA
+    (20) dec_array -> . ICORCH RCORCH ID PUNTOCOMA
+    (61) empty -> .
+    (21) tipo -> . INT
+    (22) tipo -> . FLOAT
+    (23) tipo -> . CHAR
+    (24) tipo -> . DOUBLE
+    (25) tipo -> . BOOLEAN
+    (26) tipo -> . STRING
+
+    IF              shift and go to state 11
+    FOR             shift and go to state 12
+    WHILE           shift and go to state 13
+    SYSTEM          shift and go to state 14
+    ID              shift and go to state 16
+    ICORCH          shift and go to state 17
+    RLLAVE          reduce using rule 61 (empty -> .)
+    INT             shift and go to state 18
+    FLOAT           shift and go to state 19
+    CHAR            shift and go to state 20
+    DOUBLE          shift and go to state 21
+    BOOLEAN         shift and go to state 22
+    STRING          shift and go to state 23
+
+    sent                           shift and go to state 94
+    if_instr                       shift and go to state 3
+    for_instr                      shift and go to state 4
+    while_instr                    shift and go to state 5
+    print                          shift and go to state 6
+    dec_val                        shift and go to state 7
+    sing_val                       shift and go to state 8
+    dec_array                      shift and go to state 9
+    empty                          shift and go to state 10
+    tipo                           shift and go to state 15
+
+state 81
+
+    (29) exp_logic -> exp_logic AND exp_logic .
+    (29) exp_logic -> exp_logic . AND exp_logic
+    (30) exp_logic -> exp_logic . OR exp_logic
+
+  ! shift/reduce conflict for AND resolved as shift
+  ! shift/reduce conflict for OR resolved as shift
+    RPAREN          reduce using rule 29 (exp_logic -> exp_logic AND exp_logic .)
+    PUNTOCOMA       reduce using rule 29 (exp_logic -> exp_logic AND exp_logic .)
+    AND             shift and go to state 56
+    OR              shift and go to state 57
+
+  ! AND             [ reduce using rule 29 (exp_logic -> exp_logic AND exp_logic .) ]
+  ! OR              [ reduce using rule 29 (exp_logic -> exp_logic AND exp_logic .) ]
+
+
+state 82
+
+    (30) exp_logic -> exp_logic OR exp_logic .
+    (29) exp_logic -> exp_logic . AND exp_logic
+    (30) exp_logic -> exp_logic . OR exp_logic
+
+  ! shift/reduce conflict for AND resolved as shift
+  ! shift/reduce conflict for OR resolved as shift
+    RPAREN          reduce using rule 30 (exp_logic -> exp_logic OR exp_logic .)
+    PUNTOCOMA       reduce using rule 30 (exp_logic -> exp_logic OR exp_logic .)
+    AND             shift and go to state 56
+    OR              shift and go to state 57
+
+  ! AND             [ reduce using rule 30 (exp_logic -> exp_logic OR exp_logic .) ]
+  ! OR              [ reduce using rule 30 (exp_logic -> exp_logic OR exp_logic .) ]
+
+
+state 83
+
+    (33) exp_rel -> exp_rel op_rel term .
+
+    IGUAL           reduce using rule 33 (exp_rel -> exp_rel op_rel term .)
+    MAYOR           reduce using rule 33 (exp_rel -> exp_rel op_rel term .)
+    MENOR           reduce using rule 33 (exp_rel -> exp_rel op_rel term .)
+    DIF             reduce using rule 33 (exp_rel -> exp_rel op_rel term .)
+    MAYORIGUAL      reduce using rule 33 (exp_rel -> exp_rel op_rel term .)
+    MENORIGUAL      reduce using rule 33 (exp_rel -> exp_rel op_rel term .)
+    RPAREN          reduce using rule 33 (exp_rel -> exp_rel op_rel term .)
+    AND             reduce using rule 33 (exp_rel -> exp_rel op_rel term .)
+    OR              reduce using rule 33 (exp_rel -> exp_rel op_rel term .)
+    PUNTOCOMA       reduce using rule 33 (exp_rel -> exp_rel op_rel term .)
+
+
+state 84
+
+    (53) term -> fact_arit .
+
+    IGUAL           reduce using rule 53 (term -> fact_arit .)
+    MAYOR           reduce using rule 53 (term -> fact_arit .)
+    MENOR           reduce using rule 53 (term -> fact_arit .)
+    DIF             reduce using rule 53 (term -> fact_arit .)
+    MAYORIGUAL      reduce using rule 53 (term -> fact_arit .)
+    MENORIGUAL      reduce using rule 53 (term -> fact_arit .)
+    RPAREN          reduce using rule 53 (term -> fact_arit .)
+    AND             reduce using rule 53 (term -> fact_arit .)
+    OR              reduce using rule 53 (term -> fact_arit .)
+    PUNTOCOMA       reduce using rule 53 (term -> fact_arit .)
+
+
+state 85
+
+    (32) exp_rel -> exp_arit op_rel exp_arit .
+    (34) exp_arit -> exp_arit . MAS term_arit
+    (35) exp_arit -> exp_arit . MENOS term_arit
+
+    IGUAL           reduce using rule 32 (exp_rel -> exp_arit op_rel exp_arit .)
+    MAYOR           reduce using rule 32 (exp_rel -> exp_arit op_rel exp_arit .)
+    MENOR           reduce using rule 32 (exp_rel -> exp_arit op_rel exp_arit .)
+    DIF             reduce using rule 32 (exp_rel -> exp_arit op_rel exp_arit .)
+    MAYORIGUAL      reduce using rule 32 (exp_rel -> exp_arit op_rel exp_arit .)
+    MENORIGUAL      reduce using rule 32 (exp_rel -> exp_arit op_rel exp_arit .)
+    RPAREN          reduce using rule 32 (exp_rel -> exp_arit op_rel exp_arit .)
+    AND             reduce using rule 32 (exp_rel -> exp_arit op_rel exp_arit .)
+    OR              reduce using rule 32 (exp_rel -> exp_arit op_rel exp_arit .)
+    PUNTOCOMA       reduce using rule 32 (exp_rel -> exp_arit op_rel exp_arit .)
+    MAS             shift and go to state 67
+    MENOS           shift and go to state 68
+
+
+state 86
+
+    (34) exp_arit -> exp_arit MAS term_arit .
+    (37) term_arit -> term_arit . MULT fact_arit
+    (38) term_arit -> term_arit . DIV fact_arit
+
+    MAS             reduce using rule 34 (exp_arit -> exp_arit MAS term_arit .)
+    MENOS           reduce using rule 34 (exp_arit -> exp_arit MAS term_arit .)
+    IGUAL           reduce using rule 34 (exp_arit -> exp_arit MAS term_arit .)
+    MAYOR           reduce using rule 34 (exp_arit -> exp_arit MAS term_arit .)
+    MENOR           reduce using rule 34 (exp_arit -> exp_arit MAS term_arit .)
+    DIF             reduce using rule 34 (exp_arit -> exp_arit MAS term_arit .)
+    MAYORIGUAL      reduce using rule 34 (exp_arit -> exp_arit MAS term_arit .)
+    MENORIGUAL      reduce using rule 34 (exp_arit -> exp_arit MAS term_arit .)
+    PUNTOCOMA       reduce using rule 34 (exp_arit -> exp_arit MAS term_arit .)
+    RPAREN          reduce using rule 34 (exp_arit -> exp_arit MAS term_arit .)
+    AND             reduce using rule 34 (exp_arit -> exp_arit MAS term_arit .)
+    OR              reduce using rule 34 (exp_arit -> exp_arit MAS term_arit .)
+    MULT            shift and go to state 69
+    DIV             shift and go to state 70
+
+
+state 87
+
+    (35) exp_arit -> exp_arit MENOS term_arit .
+    (37) term_arit -> term_arit . MULT fact_arit
+    (38) term_arit -> term_arit . DIV fact_arit
+
+    MAS             reduce using rule 35 (exp_arit -> exp_arit MENOS term_arit .)
+    MENOS           reduce using rule 35 (exp_arit -> exp_arit MENOS term_arit .)
+    IGUAL           reduce using rule 35 (exp_arit -> exp_arit MENOS term_arit .)
+    MAYOR           reduce using rule 35 (exp_arit -> exp_arit MENOS term_arit .)
+    MENOR           reduce using rule 35 (exp_arit -> exp_arit MENOS term_arit .)
+    DIF             reduce using rule 35 (exp_arit -> exp_arit MENOS term_arit .)
+    MAYORIGUAL      reduce using rule 35 (exp_arit -> exp_arit MENOS term_arit .)
+    MENORIGUAL      reduce using rule 35 (exp_arit -> exp_arit MENOS term_arit .)
+    PUNTOCOMA       reduce using rule 35 (exp_arit -> exp_arit MENOS term_arit .)
+    RPAREN          reduce using rule 35 (exp_arit -> exp_arit MENOS term_arit .)
+    AND             reduce using rule 35 (exp_arit -> exp_arit MENOS term_arit .)
+    OR              reduce using rule 35 (exp_arit -> exp_arit MENOS term_arit .)
+    MULT            shift and go to state 69
+    DIV             shift and go to state 70
+
+
+state 88
+
+    (37) term_arit -> term_arit MULT fact_arit .
+
+    MULT            reduce using rule 37 (term_arit -> term_arit MULT fact_arit .)
+    DIV             reduce using rule 37 (term_arit -> term_arit MULT fact_arit .)
+    MAS             reduce using rule 37 (term_arit -> term_arit MULT fact_arit .)
+    MENOS           reduce using rule 37 (term_arit -> term_arit MULT fact_arit .)
+    IGUAL           reduce using rule 37 (term_arit -> term_arit MULT fact_arit .)
+    MAYOR           reduce using rule 37 (term_arit -> term_arit MULT fact_arit .)
+    MENOR           reduce using rule 37 (term_arit -> term_arit MULT fact_arit .)
+    DIF             reduce using rule 37 (term_arit -> term_arit MULT fact_arit .)
+    MAYORIGUAL      reduce using rule 37 (term_arit -> term_arit MULT fact_arit .)
+    MENORIGUAL      reduce using rule 37 (term_arit -> term_arit MULT fact_arit .)
+    PUNTOCOMA       reduce using rule 37 (term_arit -> term_arit MULT fact_arit .)
+    RPAREN          reduce using rule 37 (term_arit -> term_arit MULT fact_arit .)
+    AND             reduce using rule 37 (term_arit -> term_arit MULT fact_arit .)
+    OR              reduce using rule 37 (term_arit -> term_arit MULT fact_arit .)
+
+
+state 89
+
+    (38) term_arit -> term_arit DIV fact_arit .
+
+    MULT            reduce using rule 38 (term_arit -> term_arit DIV fact_arit .)
+    DIV             reduce using rule 38 (term_arit -> term_arit DIV fact_arit .)
+    MAS             reduce using rule 38 (term_arit -> term_arit DIV fact_arit .)
+    MENOS           reduce using rule 38 (term_arit -> term_arit DIV fact_arit .)
+    IGUAL           reduce using rule 38 (term_arit -> term_arit DIV fact_arit .)
+    MAYOR           reduce using rule 38 (term_arit -> term_arit DIV fact_arit .)
+    MENOR           reduce using rule 38 (term_arit -> term_arit DIV fact_arit .)
+    DIF             reduce using rule 38 (term_arit -> term_arit DIV fact_arit .)
+    MAYORIGUAL      reduce using rule 38 (term_arit -> term_arit DIV fact_arit .)
+    MENORIGUAL      reduce using rule 38 (term_arit -> term_arit DIV fact_arit .)
+    PUNTOCOMA       reduce using rule 38 (term_arit -> term_arit DIV fact_arit .)
+    RPAREN          reduce using rule 38 (term_arit -> term_arit DIV fact_arit .)
+    AND             reduce using rule 38 (term_arit -> term_arit DIV fact_arit .)
+    OR              reduce using rule 38 (term_arit -> term_arit DIV fact_arit .)
+
+
+state 90
+
+    (12) for_instr -> FOR IPAREN sing_val exp_logic PUNTOCOMA . op_idec RPAREN ILLAVE sent RLLAVE
+    (57) op_idec -> . ID INC
+    (58) op_idec -> . ID DEC
+    (59) op_idec -> . DEC ID
+    (60) op_idec -> . INC ID
+
+    ID              shift and go to state 96
+    DEC             shift and go to state 98
+    INC             shift and go to state 97
+
+    op_idec                        shift and go to state 95
+
+state 91
+
+    (13) while_instr -> WHILE IPAREN exp_logic RPAREN ILLAVE . sent RLLAVE
+    (2) sent -> . if_instr
+    (3) sent -> . for_instr
+    (4) sent -> . while_instr
+    (5) sent -> . print
+    (6) sent -> . dec_val
+    (7) sent -> . sing_val
+    (8) sent -> . dec_array
+    (9) sent -> . empty
+    (10) if_instr -> . IF IPAREN exp_logic RPAREN ILLAVE sent RLLAVE
+    (11) if_instr -> . IF IPAREN exp_logic RPAREN ILLAVE sent RLLAVE ELSE ILLAVE sent RLLAVE
+    (12) for_instr -> . FOR IPAREN sing_val exp_logic PUNTOCOMA op_idec RPAREN ILLAVE sent RLLAVE
+    (13) while_instr -> . WHILE IPAREN exp_logic RPAREN ILLAVE sent RLLAVE
+    (14) print -> . SYSTEM PUNTO OUT PUNTO PRINTL IPAREN valor_cadena RPAREN PUNTOCOMA
+    (15) dec_val -> . tipo ID rest_dec PUNTOCOMA
+    (18) sing_val -> . ID ASING term PUNTOCOMA
+    (19) sing_val -> . ID ASING exp_arit PUNTOCOMA
+    (20) dec_array -> . ICORCH RCORCH ID PUNTOCOMA
+    (61) empty -> .
+    (21) tipo -> . INT
+    (22) tipo -> . FLOAT
+    (23) tipo -> . CHAR
+    (24) tipo -> . DOUBLE
+    (25) tipo -> . BOOLEAN
+    (26) tipo -> . STRING
+
+    IF              shift and go to state 11
+    FOR             shift and go to state 12
+    WHILE           shift and go to state 13
+    SYSTEM          shift and go to state 14
+    ID              shift and go to state 16
+    ICORCH          shift and go to state 17
+    RLLAVE          reduce using rule 61 (empty -> .)
+    INT             shift and go to state 18
+    FLOAT           shift and go to state 19
+    CHAR            shift and go to state 20
+    DOUBLE          shift and go to state 21
+    BOOLEAN         shift and go to state 22
+    STRING          shift and go to state 23
+
+    sent                           shift and go to state 99
+    if_instr                       shift and go to state 3
+    for_instr                      shift and go to state 4
+    while_instr                    shift and go to state 5
+    print                          shift and go to state 6
+    dec_val                        shift and go to state 7
+    sing_val                       shift and go to state 8
+    dec_array                      shift and go to state 9
+    empty                          shift and go to state 10
+    tipo                           shift and go to state 15
+
+state 92
+
+    (14) print -> SYSTEM PUNTO OUT PUNTO PRINTL . IPAREN valor_cadena RPAREN PUNTOCOMA
+
+    IPAREN          shift and go to state 100
+
+
+state 93
+
+    (16) rest_dec -> COMA ID rest_dec .
+
+    PUNTOCOMA       reduce using rule 16 (rest_dec -> COMA ID rest_dec .)
+
+
+state 94
+
+    (10) if_instr -> IF IPAREN exp_logic RPAREN ILLAVE sent . RLLAVE
+    (11) if_instr -> IF IPAREN exp_logic RPAREN ILLAVE sent . RLLAVE ELSE ILLAVE sent RLLAVE
+
+    RLLAVE          shift and go to state 101
+
+
+state 95
+
+    (12) for_instr -> FOR IPAREN sing_val exp_logic PUNTOCOMA op_idec . RPAREN ILLAVE sent RLLAVE
+
+    RPAREN          shift and go to state 102
+
+
+state 96
+
+    (57) op_idec -> ID . INC
+    (58) op_idec -> ID . DEC
+
+    INC             shift and go to state 103
+    DEC             shift and go to state 104
+
+
+state 97
+
+    (60) op_idec -> INC . ID
+
+    ID              shift and go to state 105
+
+
+state 98
+
+    (59) op_idec -> DEC . ID
+
+    ID              shift and go to state 106
+
+
+state 99
+
+    (13) while_instr -> WHILE IPAREN exp_logic RPAREN ILLAVE sent . RLLAVE
+
+    RLLAVE          shift and go to state 107
+
+
+state 100
+
+    (14) print -> SYSTEM PUNTO OUT PUNTO PRINTL IPAREN . valor_cadena RPAREN PUNTOCOMA
+    (44) valor_cadena -> . CADENA
+    (45) valor_cadena -> . CADENA MAS ID
+    (46) valor_cadena -> . CADENA MAS ENTERO
+
+    CADENA          shift and go to state 109
+
+    valor_cadena                   shift and go to state 108
+
+state 101
+
+    (10) if_instr -> IF IPAREN exp_logic RPAREN ILLAVE sent RLLAVE .
+    (11) if_instr -> IF IPAREN exp_logic RPAREN ILLAVE sent RLLAVE . ELSE ILLAVE sent RLLAVE
+
+    $end            reduce using rule 10 (if_instr -> IF IPAREN exp_logic RPAREN ILLAVE sent RLLAVE .)
+    RLLAVE          reduce using rule 10 (if_instr -> IF IPAREN exp_logic RPAREN ILLAVE sent RLLAVE .)
+    ELSE            shift and go to state 110
+
+
+state 102
+
+    (12) for_instr -> FOR IPAREN sing_val exp_logic PUNTOCOMA op_idec RPAREN . ILLAVE sent RLLAVE
+
+    ILLAVE          shift and go to state 111
+
+
+state 103
+
+    (57) op_idec -> ID INC .
+
+    RPAREN          reduce using rule 57 (op_idec -> ID INC .)
+
+
+state 104
+
+    (58) op_idec -> ID DEC .
+
+    RPAREN          reduce using rule 58 (op_idec -> ID DEC .)
+
+
+state 105
+
+    (60) op_idec -> INC ID .
+
+    RPAREN          reduce using rule 60 (op_idec -> INC ID .)
+
+
+state 106
+
+    (59) op_idec -> DEC ID .
+
+    RPAREN          reduce using rule 59 (op_idec -> DEC ID .)
+
+
+state 107
+
+    (13) while_instr -> WHILE IPAREN exp_logic RPAREN ILLAVE sent RLLAVE .
+
+    $end            reduce using rule 13 (while_instr -> WHILE IPAREN exp_logic RPAREN ILLAVE sent RLLAVE .)
+    RLLAVE          reduce using rule 13 (while_instr -> WHILE IPAREN exp_logic RPAREN ILLAVE sent RLLAVE .)
+
+
+state 108
+
+    (14) print -> SYSTEM PUNTO OUT PUNTO PRINTL IPAREN valor_cadena . RPAREN PUNTOCOMA
+
+    RPAREN          shift and go to state 112
+
+
+state 109
+
+    (44) valor_cadena -> CADENA .
+    (45) valor_cadena -> CADENA . MAS ID
+    (46) valor_cadena -> CADENA . MAS ENTERO
+
+    RPAREN          reduce using rule 44 (valor_cadena -> CADENA .)
+    MAS             shift and go to state 113
+
+
+state 110
+
+    (11) if_instr -> IF IPAREN exp_logic RPAREN ILLAVE sent RLLAVE ELSE . ILLAVE sent RLLAVE
+
+    ILLAVE          shift and go to state 114
+
+
+state 111
+
+    (12) for_instr -> FOR IPAREN sing_val exp_logic PUNTOCOMA op_idec RPAREN ILLAVE . sent RLLAVE
+    (2) sent -> . if_instr
+    (3) sent -> . for_instr
+    (4) sent -> . while_instr
+    (5) sent -> . print
+    (6) sent -> . dec_val
+    (7) sent -> . sing_val
+    (8) sent -> . dec_array
+    (9) sent -> . empty
+    (10) if_instr -> . IF IPAREN exp_logic RPAREN ILLAVE sent RLLAVE
+    (11) if_instr -> . IF IPAREN exp_logic RPAREN ILLAVE sent RLLAVE ELSE ILLAVE sent RLLAVE
+    (12) for_instr -> . FOR IPAREN sing_val exp_logic PUNTOCOMA op_idec RPAREN ILLAVE sent RLLAVE
+    (13) while_instr -> . WHILE IPAREN exp_logic RPAREN ILLAVE sent RLLAVE
+    (14) print -> . SYSTEM PUNTO OUT PUNTO PRINTL IPAREN valor_cadena RPAREN PUNTOCOMA
+    (15) dec_val -> . tipo ID rest_dec PUNTOCOMA
+    (18) sing_val -> . ID ASING term PUNTOCOMA
+    (19) sing_val -> . ID ASING exp_arit PUNTOCOMA
+    (20) dec_array -> . ICORCH RCORCH ID PUNTOCOMA
+    (61) empty -> .
+    (21) tipo -> . INT
+    (22) tipo -> . FLOAT
+    (23) tipo -> . CHAR
+    (24) tipo -> . DOUBLE
+    (25) tipo -> . BOOLEAN
+    (26) tipo -> . STRING
+
+    IF              shift and go to state 11
+    FOR             shift and go to state 12
+    WHILE           shift and go to state 13
+    SYSTEM          shift and go to state 14
+    ID              shift and go to state 16
+    ICORCH          shift and go to state 17
+    RLLAVE          reduce using rule 61 (empty -> .)
+    INT             shift and go to state 18
+    FLOAT           shift and go to state 19
+    CHAR            shift and go to state 20
+    DOUBLE          shift and go to state 21
+    BOOLEAN         shift and go to state 22
+    STRING          shift and go to state 23
+
+    sing_val                       shift and go to state 8
+    sent                           shift and go to state 115
+    if_instr                       shift and go to state 3
+    for_instr                      shift and go to state 4
+    while_instr                    shift and go to state 5
+    print                          shift and go to state 6
+    dec_val                        shift and go to state 7
+    dec_array                      shift and go to state 9
+    empty                          shift and go to state 10
+    tipo                           shift and go to state 15
+
+state 112
+
+    (14) print -> SYSTEM PUNTO OUT PUNTO PRINTL IPAREN valor_cadena RPAREN . PUNTOCOMA
+
+    PUNTOCOMA       shift and go to state 116
+
+
+state 113
+
+    (45) valor_cadena -> CADENA MAS . ID
+    (46) valor_cadena -> CADENA MAS . ENTERO
+
+    ID              shift and go to state 117
+    ENTERO          shift and go to state 118
+
+
+state 114
+
+    (11) if_instr -> IF IPAREN exp_logic RPAREN ILLAVE sent RLLAVE ELSE ILLAVE . sent RLLAVE
+    (2) sent -> . if_instr
+    (3) sent -> . for_instr
+    (4) sent -> . while_instr
+    (5) sent -> . print
+    (6) sent -> . dec_val
+    (7) sent -> . sing_val
+    (8) sent -> . dec_array
+    (9) sent -> . empty
+    (10) if_instr -> . IF IPAREN exp_logic RPAREN ILLAVE sent RLLAVE
+    (11) if_instr -> . IF IPAREN exp_logic RPAREN ILLAVE sent RLLAVE ELSE ILLAVE sent RLLAVE
+    (12) for_instr -> . FOR IPAREN sing_val exp_logic PUNTOCOMA op_idec RPAREN ILLAVE sent RLLAVE
+    (13) while_instr -> . WHILE IPAREN exp_logic RPAREN ILLAVE sent RLLAVE
+    (14) print -> . SYSTEM PUNTO OUT PUNTO PRINTL IPAREN valor_cadena RPAREN PUNTOCOMA
+    (15) dec_val -> . tipo ID rest_dec PUNTOCOMA
+    (18) sing_val -> . ID ASING term PUNTOCOMA
+    (19) sing_val -> . ID ASING exp_arit PUNTOCOMA
+    (20) dec_array -> . ICORCH RCORCH ID PUNTOCOMA
+    (61) empty -> .
+    (21) tipo -> . INT
+    (22) tipo -> . FLOAT
+    (23) tipo -> . CHAR
+    (24) tipo -> . DOUBLE
+    (25) tipo -> . BOOLEAN
+    (26) tipo -> . STRING
+
+    IF              shift and go to state 11
+    FOR             shift and go to state 12
+    WHILE           shift and go to state 13
+    SYSTEM          shift and go to state 14
+    ID              shift and go to state 16
+    ICORCH          shift and go to state 17
+    RLLAVE          reduce using rule 61 (empty -> .)
+    INT             shift and go to state 18
+    FLOAT           shift and go to state 19
+    CHAR            shift and go to state 20
+    DOUBLE          shift and go to state 21
+    BOOLEAN         shift and go to state 22
+    STRING          shift and go to state 23
+
+    sent                           shift and go to state 119
+    if_instr                       shift and go to state 3
+    for_instr                      shift and go to state 4
+    while_instr                    shift and go to state 5
+    print                          shift and go to state 6
+    dec_val                        shift and go to state 7
+    sing_val                       shift and go to state 8
+    dec_array                      shift and go to state 9
+    empty                          shift and go to state 10
+    tipo                           shift and go to state 15
+
+state 115
+
+    (12) for_instr -> FOR IPAREN sing_val exp_logic PUNTOCOMA op_idec RPAREN ILLAVE sent . RLLAVE
+
+    RLLAVE          shift and go to state 120
+
+
+state 116
+
+    (14) print -> SYSTEM PUNTO OUT PUNTO PRINTL IPAREN valor_cadena RPAREN PUNTOCOMA .
+
+    $end            reduce using rule 14 (print -> SYSTEM PUNTO OUT PUNTO PRINTL IPAREN valor_cadena RPAREN PUNTOCOMA .)
+    RLLAVE          reduce using rule 14 (print -> SYSTEM PUNTO OUT PUNTO PRINTL IPAREN valor_cadena RPAREN PUNTOCOMA .)
+
+
+state 117
+
+    (45) valor_cadena -> CADENA MAS ID .
+
+    RPAREN          reduce using rule 45 (valor_cadena -> CADENA MAS ID .)
+
+
+state 118
+
+    (46) valor_cadena -> CADENA MAS ENTERO .
+
+    RPAREN          reduce using rule 46 (valor_cadena -> CADENA MAS ENTERO .)
+
+
+state 119
+
+    (11) if_instr -> IF IPAREN exp_logic RPAREN ILLAVE sent RLLAVE ELSE ILLAVE sent . RLLAVE
+
+    RLLAVE          shift and go to state 121
+
+
+state 120
+
+    (12) for_instr -> FOR IPAREN sing_val exp_logic PUNTOCOMA op_idec RPAREN ILLAVE sent RLLAVE .
+
+    $end            reduce using rule 12 (for_instr -> FOR IPAREN sing_val exp_logic PUNTOCOMA op_idec RPAREN ILLAVE sent RLLAVE .)
+    RLLAVE          reduce using rule 12 (for_instr -> FOR IPAREN sing_val exp_logic PUNTOCOMA op_idec RPAREN ILLAVE sent RLLAVE .)
+
+
+state 121
+
+    (11) if_instr -> IF IPAREN exp_logic RPAREN ILLAVE sent RLLAVE ELSE ILLAVE sent RLLAVE .
+
+    $end            reduce using rule 11 (if_instr -> IF IPAREN exp_logic RPAREN ILLAVE sent RLLAVE ELSE ILLAVE sent RLLAVE .)
+    RLLAVE          reduce using rule 11 (if_instr -> IF IPAREN exp_logic RPAREN ILLAVE sent RLLAVE ELSE ILLAVE sent RLLAVE .)
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: shift/reduce conflict for AND in state 65 resolved as shift
+WARNING: shift/reduce conflict for OR in state 65 resolved as shift
+WARNING: shift/reduce conflict for AND in state 81 resolved as shift
+WARNING: shift/reduce conflict for OR in state 81 resolved as shift
+WARNING: shift/reduce conflict for AND in state 82 resolved as shift
+WARNING: shift/reduce conflict for OR in state 82 resolved as shift
+WARNING: reduce/reduce conflict in state 51 resolved using rule (term_arit -> fact_arit)
+WARNING: rejected rule (term -> fact_arit) in state 51

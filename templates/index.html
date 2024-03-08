@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,
+        initial-scale=1.0">
+        <title>Compilador </title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    </head>
+    <body class="body">
+        <div class="content-cabecera">
+            <p class="titulo">Compilador</p>    
+        </div>
+        <div class="container">
+            <textarea class="textarea" placeholder="Enter a message..." id="insert"></textarea>
+            <button onclick="analizarCodigo()">Analizar</button>
+        </div>
+        <div class="container" id="contentAnalisis"></div>
+        <!--JavaScript-->
+        <script>
+            function analizarCodigo() {
+                const data = document.getElementById('insert').value;
+                fetch('/lex', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ data: data }),
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! Status: ${response.status}`);
+                    }
+                    return response.text();  
+                })
+                .then(data => {
+                
+                    document.getElementById('contentAnalisis').innerHTML = data;
+                })
+                .catch(error => console.error('Error:', error));
+            }
+          </script>
+
+    </body> 
+</html>

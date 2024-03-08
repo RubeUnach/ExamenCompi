@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,
+        initial-scale=1.0">
+        <title>Compilador </title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    </head>
+    <body class="body">
+        <div class="container">
+            <textarea class="textarea" placeholder="Resultado lexico..." disabled id="text_lex" >
+                TOKEN   | LEXICO | LINEA
+                {% for token in tokens %}
+                    {{ token.lex }} | {{ token.token }} | {{ token.linea }}
+                {% endfor %}
+            </textarea>
+            <br>
+            <p class="text">Analicis Sintactico</p>
+            <textarea class="textarea" placeholder="Resultado sintactico..." disabled name="text_sin" id="text_sin" >
+                {% if condicion == "No" %}
+                    Syntaxis Error
+                {% else %}
+                    Syntaxis Correcta
+                {% endif %}
+            </textarea>
+            <br>
+            <form action="/" method="get">
+                <button name="limpBtn" type="submit">Limpiar</button>
+            </form>
+        </div>
+    </body> 
+</html>
